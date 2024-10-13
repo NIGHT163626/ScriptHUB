@@ -248,8 +248,8 @@ function MakeWindow(Configs)
     })
     
     local ConfirmButton = Create("TextButton", KeyMenu, {
-      Text = "Confirm",
-      Font = Configs_HUB.Text_Font,
+      Text = "Checar Key",
+      Font =CONFIRMs_HUB.Text_Font,
       TextSize = 20,
       TextColor3 = Configs_HUB.Cor_Text,
       Size = UDim2.new(0, 150, 0, 40),
