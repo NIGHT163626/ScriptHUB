@@ -198,8 +198,8 @@ function MakeWindow(Configs)
   local KeyKey = Configs.Key.Keys or {"123", "321"}
   local KeyLink = Configs.Key.KeyLink or ""
   local KeyNotifications = Configs.Key.Notifi.Notifications or true
-  local KeyNotSuccess = Configs.Key.Notifi.Incorrectkey or "Key Incorreta"
-  local KeySuccess = Configs.Key.Notifi.CorrectKey or "Key Correta"
+  local KeyNotSuccess = Configs.Key.Notifi.Key Incorreta or "Key Incorreta"
+  local KeySuccess = Configs.Key.Notifi.Key Correta or "Key Correta"
   local KeyCopyKeyLink = Configs.Key.Notifi.CopyKeyLink or "Copied to Clipboard"
   
   if KeySystem then
