@@ -906,13 +906,16 @@ function OrionLib:MakeWindow(WindowConfig)
 				end
 				return LogFunction
 			end
-			function ElementFunction:AddLabel(Text)
+			function ElementFunction:AddLabel(Text, Width, Height)
+    local LabelWidth = Width or 1 -- Tamanho padrão para largura (1 significa 100% da largura do pai)
+    local LabelHeight = Height or 50 -- Tamanho padrão para altura (50)
+
     local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-        Size = UDim2.new(1, 0, 0, 50),  -- Aumentado para 50 de altura
+        Size = UDim2.new(LabelWidth, 0, 0, LabelHeight),  -- Usa o parâmetro para a altura
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
-        AddThemeObject(SetProps(MakeElement("Label", Text, 20), {  -- Aumentado o tamanho do texto para 20
+        AddThemeObject(SetProps(MakeElement("Label", Text, 20), {  -- Mantém o tamanho do texto como 20
             Size = UDim2.new(1, -12, 1, 0),
             Position = UDim2.new(0, 12, 0, 0),
             Font = Enum.Font.GothamBold,
