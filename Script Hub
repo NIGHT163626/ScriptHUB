@@ -1,13 +1,1 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/NIGHT163626/ScriptHUB/refs/heads/main/open%20sourcezada.txt')))()
 
-local Window = OrionLib:MakeWindow({
-    Name = "Poison Hub 1.0", 
-    HidePremium = false, 
-    SaveConfig = true, 
-    ConfigFolder = "OrionTest"})
-    
-    local Tab = Window:MakeTab({
-	Name = "Tab 1",
-	Icon = "rbxassetid://11663743444",
-	PremiumOnly = false
-})
