@@ -1340,7 +1340,7 @@ end
 
 				function Dropdown:Set(Value)
 					if not table.find(Dropdown.Options, Value) then
-						Dropdown.Value = "..."
+						Dropdown.Value = "Selecione"
 						DropdownFrame.F.Selected.Text = Dropdown.Value
 						for _, v in pairs(Dropdown.Buttons) do
 							TweenService:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
