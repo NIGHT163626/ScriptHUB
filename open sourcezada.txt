@@ -933,7 +933,7 @@ end
 
 function ElementFunction:AddLabel(Text, Width, Height)
     local LabelWidth = Width or 1 -- Tamanho padrão para largura (1 significa 100% da largura do pai)
-    local LabelHeight = Height or 200 -- Aumentado para 200 de altura
+    local LabelHeight = Height or 400 -- Aumentado para 200 de altura
 
     local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
         Size = UDim2.new(LabelWidth, 0, 0, LabelHeight),  -- Usa o parâmetro para a altura
