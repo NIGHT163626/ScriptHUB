@@ -610,15 +610,15 @@ function OrionLib:MakeWindow(WindowConfig)
 if WindowConfig.SearchBar then
 	-- Criação da barra de pesquisa
 	local SearchBox = Create("TextBox", {
-		Size = UDim2.new(1, -24, 1, 0),  -- Ajusta para dar espaço para o ícone
+		Size = UDim2.new(1, -28, 1, 0),  -- Ajusta para dar espaço para o ícone
 		BackgroundTransparency = 1,
 		TextColor3 = Color3.fromRGB(255, 255, 255),
 		PlaceholderColor3 = Color3.fromRGB(210, 210, 210),
-		PlaceholderText = WindowConfig.SearchBar.Default or "🔍 Search",
+		PlaceholderText = WindowConfig.SearchBar.Default or "Search",
 		Font = Enum.Font.GothamBold,
 		TextWrapped = true,
 		Text = '',
-		TextXAlignment = Enum.TextXAlignment.Center,
+		TextXAlignment = Enum.TextXAlignment.Left,  -- Texto alinhado à esquerda
 		TextSize = 14,
 		ClearTextOnFocus = WindowConfig.SearchBar.ClearTextOnFocus or true
 	})
@@ -627,11 +627,11 @@ if WindowConfig.SearchBar then
 
 	-- Criação do ícone de pesquisa
 	local SearchIcon = Create("ImageLabel", {
-		Size = UDim2.new(0, 20, 0, 20),  -- Tamanho do ícone
+		Size = UDim2.new(0, 18, 0, 18),  -- Tamanho ajustado para o texto
 		BackgroundTransparency = 1,
 		Image = "rbxassetid://96539070062171",  -- Ícone de pesquisa
-		Position = UDim2.new(1, -25, 0.5, 0),  -- Posição ao lado do campo de texto
-		AnchorPoint = Vector2.new(1, 0.5),
+		Position = UDim2.new(0, 4, 0.5, 0),  -- Posição ao lado esquerdo do campo de texto
+		AnchorPoint = Vector2.new(0, 0.5),  -- Centraliza verticalmente
 		Parent = WindowStuff  -- Define o pai do ícone
 	})
 
