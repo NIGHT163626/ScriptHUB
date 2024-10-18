@@ -605,67 +605,65 @@ function OrionLib:MakeWindow(WindowConfig)
 	}), "Second")
 
 	-- @ SearchBar (Zv-yz/github);
-	local Tabs = {};
+	local Tabs = {}
 
 if WindowConfig.SearchBar then
-	-- Criação da barra de pesquisa
-	local SearchBox = Create("TextBox", {
-		Size = UDim2.new(1, -28, 1, 0),  -- Ajusta para dar espaço para o ícone
-		BackgroundTransparency = 1,
-		TextColor3 = Color3.fromRGB(255, 255, 255),
-		PlaceholderColor3 = Color3.fromRGB(210, 210, 210),
-		PlaceholderText = WindowConfig.SearchBar.Default or "Search",
-		Font = Enum.Font.GothamBold,
-		TextWrapped = true,
-		Text = '',
-		TextXAlignment = Enum.TextXAlignment.Left,  -- Texto alinhado à esquerda
-		TextSize = 14,
-		ClearTextOnFocus = WindowConfig.SearchBar.ClearTextOnFocus or true
-	})
+    -- Criação da barra de pesquisa
+    local SearchBox = Create("TextBox", {
+        Size = UDim2.new(1, -28, 1, 0),  -- Ajusta para dar espaço para o ícone
+        BackgroundTransparency = 1,
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        PlaceholderColor3 = Color3.fromRGB(210, 210, 210),
+        PlaceholderText = WindowConfig.SearchBar.Default or "Pesquisa",
+        Font = Enum.Font.GothamBold,
+        TextWrapped = true,
+        Text = '',
+        TextXAlignment = Enum.TextXAlignment.Left,  -- Alinha o texto à esquerda
+        TextSize = 14,
+        ClearTextOnFocus = WindowConfig.SearchBar.ClearTextOnFocus or true
+    })
 
-	local TextboxActual = AddThemeObject(SearchBox, "Text")
+    local TextboxActual = AddThemeObject(SearchBox, "Text")
 
-	-- Criação do ícone de pesquisa
-	local SearchIcon = Create("ImageLabel", {
-		Size = UDim2.new(0, 18, 0, 18),  -- Tamanho ajustado para o texto
-		BackgroundTransparency = 1,
-		Image = "rbxassetid://96539070062171",  -- Ícone de pesquisa
-		Position = UDim2.new(0, 4, 0.5, 0),  -- Posição ao lado esquerdo do campo de texto
-		AnchorPoint = Vector2.new(0, 0.5),  -- Centraliza verticalmente
-		Parent = WindowStuff  -- Define o pai do ícone
-	})
+    -- Criação do ícone de pesquisa
+    local SearchIcon = Create("ImageLabel", {
+        Size = UDim2.new(0, 16, 0, 16),  -- Tamanho ajustado para caber dentro do campo de texto
+        BackgroundTransparency = 1,
+        Image = "rbxassetid://96539070062171",  -- Ícone de pesquisa preto
+        Position = UDim2.new(0, 4, 0.5, 0),  -- Posição dentro do campo de texto, à esquerda
+        AnchorPoint = Vector2.new(0, 0.5),  -- Centraliza verticalmente
+        Parent = SearchBox  -- Ícone agora é filho do SearchBox
+    })
 
-	-- Criação da estrutura principal da barra de pesquisa
-	local SearchBar = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 1, 6), {
-		Parent = WindowStuff,
-		Size = UDim2.new(0, 130, 0, 24),
-		Position = UDim2.new(1.013, -12, 0.075, 0),
-		AnchorPoint = Vector2.new(1, 0.5)
-	}), {
-		AddThemeObject(MakeElement("Stroke"), "Stroke"),
-		TextboxActual,
-		SearchIcon  -- Adiciona o ícone ao SearchBar
-	}), "Main")
+    -- Criação da estrutura principal da barra de pesquisa
+    local SearchBar = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 1, 6), {
+        Parent = WindowStuff,
+        Size = UDim2.new(0, 130, 0, 24),
+        Position = UDim2.new(1.013, -12, 0.075, 0),
+        AnchorPoint = Vector2.new(1, 0.5)
+    }), {
+        AddThemeObject(MakeElement("Stroke"), "Stroke"),
+        TextboxActual
+    }), "Main")
 
-	-- Função para manipular a pesquisa
-	local function SearchHandle()
-		local Text = string.lower(SearchBox.Text)
+    -- Função para manipular a pesquisa
+    local function SearchHandle()
+        local Text = string.lower(SearchBox.Text)
 
-		for i, v in pairs(Tabs) do
-			if v:IsA('TextButton') then
-				if string.find(string.lower(i), Text) then
-					v.Visible = true
-				else
-					v.Visible = false
-				end
-			end
-		end
-	end
+        for i, v in pairs(Tabs) do
+            if v:IsA('TextButton') then
+                if string.find(string.lower(i), Text) then
+                    v.Visible = true
+                else
+                    v.Visible = false
+                end
+            end
+        end
+    end
 
-	-- Conexão para atualizar a pesquisa em tempo real
-	AddConnection(TextboxActual:GetPropertyChangedSignal("Text"), SearchHandle)
+    -- Conexão para atualizar a pesquisa em tempo real
+    AddConnection(TextboxActual:GetPropertyChangedSignal("Text"), SearchHandle)
 end
-
 	local WindowName = AddThemeObject(SetProps(MakeElement("Label", WindowConfig.Name, 14), {
 		Size = UDim2.new(1, -30, 2, 0),
 		Position = UDim2.new(0, 25, 0, -24),
