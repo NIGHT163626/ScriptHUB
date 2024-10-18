@@ -936,7 +936,7 @@ function ElementFunction:AddLabel(Text, Width, Height)
     local LabelHeight = Height or 200 -- Aumentado para 200 de altura
 
     local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-        Size = UDim2.new(LabelWidth, 0, 0, LabelHeight),  -- Usa o parâmetro para a altura
+        Size = UDim2.new(LabelWidth, 0, 0,200 LabelHeight),  -- Usa o parâmetro para a altura
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
