@@ -940,7 +940,7 @@ function ElementFunction:AddLabel(Text, Width, Height)
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
-        AddThemeObject(SetProps(MakeElement("Label", Text, 13), {  -- Definido o tamanho do texto para 13
+        AddThemeObject(SetProps(MakeElement("Label", Text, 33), {  -- Definido o tamanho do texto para 13
             Size = UDim2.new(1, -12, 1, 0),
             Position = UDim2.new(0, 12, 0, 0),
             Font = Enum.Font.GothamBold,
