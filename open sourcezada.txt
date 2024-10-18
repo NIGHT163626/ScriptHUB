@@ -932,6 +932,7 @@ function OrionLib:MakeWindow(WindowConfig)
 end
 
 function ElementFunction:AddLabel(Text, Width, Height)
+    function ElementFunction:AddLabel(Text, Width, Height)
     local LabelWidth = Width or 1 -- Tamanho padrão para largura (1 significa 100% da largura do pai)
     local LabelHeight = Height or 200 -- Aumentado para 200 de altura
 
@@ -940,7 +941,7 @@ function ElementFunction:AddLabel(Text, Width, Height)
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
-        AddThemeObject(SetProps(MakeElement("Label", Text, 30), {  -- Aumentado o tamanho do texto para 30
+        AddThemeObject(SetProps(MakeElement("Label", Text, 18), {  -- Diminuído o tamanho do texto para 18
             Size = UDim2.new(1, -12, 1, 0),
             Position = UDim2.new(0, 12, 0, 0),
             Font = Enum.Font.GothamBold,
@@ -965,13 +966,13 @@ function ElementFunction:AddParagraph(Text, Content)
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
-        AddThemeObject(SetProps(MakeElement("Label", Text, 30), {  -- Aumentado o tamanho do título para 30
+        AddThemeObject(SetProps(MakeElement("Label", Text, 18), {  -- Diminuído o tamanho do título para 18
             Size = UDim2.new(1, -12, 0, 30),  -- Mantém a altura do título em 30
             Position = UDim2.new(0, 12, 0, 10),
             Font = Enum.Font.GothamBold,
             Name = "Title"
         }), "Text"),
-        AddThemeObject(SetProps(MakeElement("Label", "", 20), {  -- Aumentado o tamanho do conteúdo para 20
+        AddThemeObject(SetProps(MakeElement("Label", "", 16), {  -- Diminuído o tamanho do conteúdo para 16
             Size = UDim2.new(1, -24, 0, 0),
             Position = UDim2.new(0, 12, 0, 46),  -- Ajustado para posição abaixo do título
             Font = Enum.Font.GothamSemibold,
