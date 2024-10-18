@@ -931,65 +931,68 @@ function OrionLib:MakeWindow(WindowConfig)
 	return LogFunction
 end
 
-function ElementFunction:AddLabel(Text)
-	local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-		Size = UDim2.new(1, 0, 0, 50),  -- Aumentado de 30 para 50
-		BackgroundTransparency = 0.7,
-		Parent = ItemParent
-	}), {
-		AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
-			Size = UDim2.new(1, -12, 1, 0),
-			Position = UDim2.new(0, 12, 0, 0),
-			Font = Enum.Font.GothamBold,
-			Name = "Content"
-		}), "Text"),
-		AddThemeObject(MakeElement("Stroke"), "Stroke")
-	}), "Second")
+function ElementFunction:AddLabel(Text, Width, Height)
+    local LabelWidth = Width or 1 -- Tamanho padrão para largura (1 significa 100% da largura do pai)
+    local LabelHeight = Height or 100 -- Aumentado para 100 de altura
 
-	local LabelFunction = {}
-	function LabelFunction:Set(ToChange)
-		LabelFrame.Content.Text = ToChange
-	end
-	return LabelFunction
+    local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+        Size = UDim2.new(LabelWidth, 0, 0, LabelHeight),  -- Usa o parâmetro para a altura
+        BackgroundTransparency = 0.7,
+        Parent = ItemParent
+    }), {
+        AddThemeObject(SetProps(MakeElement("Label", Text, 20), {  -- Mantém o tamanho do texto como 20
+            Size = UDim2.new(1, -12, 1, 0),
+            Position = UDim2.new(0, 12, 0, 0),
+            Font = Enum.Font.GothamBold,
+            Name = "Content"
+        }), "Text"),
+        AddThemeObject(MakeElement("Stroke"), "Stroke")
+    }), "Second")
+
+    local LabelFunction = {}
+    function LabelFunction:Set(ToChange)
+        LabelFrame.Content.Text = ToChange
+    end
+    return LabelFunction
 end
 
 function ElementFunction:AddParagraph(Text, Content)
-	Text = Text or "Text"
-	Content = Content or "Content"
+    Text = Text or "Text"
+    Content = Content or "Content"
 
-	local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-		Size = UDim2.new(1, 0, 0, 30),
-		BackgroundTransparency = 0.7,
-		Parent = ItemParent
-	}), {
-		AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
-			Size = UDim2.new(1, -12, 0, 14),
-			Position = UDim2.new(0, 12, 0, 10),
-			Font = Enum.Font.GothamBold,
-			Name = "Title"
-		}), "Text"),
-		AddThemeObject(SetProps(MakeElement("Label", "", 13), {
-			Size = UDim2.new(1, -24, 0, 0),
-			Position = UDim2.new(0, 12, 0, 26),
-			Font = Enum.Font.GothamSemibold,
-			Name = "Content",
-			TextWrapped = true
-		}), "TextDark"),
-		AddThemeObject(MakeElement("Stroke"), "Stroke")
-	}), "Second")
+    local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
+        Size = UDim2.new(1, 0, 0, 100),  -- Aumentado para 100 de altura
+        BackgroundTransparency = 0.7,
+        Parent = ItemParent
+    }), {
+        AddThemeObject(SetProps(MakeElement("Label", Text, 20), {  -- Mantém o tamanho do título como 20
+            Size = UDim2.new(1, -12, 0, 20),  -- Mantém a altura do título
+            Position = UDim2.new(0, 12, 0, 10),
+            Font = Enum.Font.GothamBold,
+            Name = "Title"
+        }), "Text"),
+        AddThemeObject(SetProps(MakeElement("Label", "", 15), {  -- Aumentado o tamanho do conteúdo para 15
+            Size = UDim2.new(1, -24, 0, 0),
+            Position = UDim2.new(0, 12, 0, 26),
+            Font = Enum.Font.GothamSemibold,
+            Name = "Content",
+            TextWrapped = true
+        }), "TextDark"),
+        AddThemeObject(MakeElement("Stroke"), "Stroke")
+    }), "Second")
 
-	AddConnection(ParagraphFrame.Content:GetPropertyChangedSignal("Text"), function()
-		ParagraphFrame.Content.Size = UDim2.new(1, -24, 0, ParagraphFrame.Content.TextBounds.Y)
-		ParagraphFrame.Size = UDim2.new(1, 0, 0, ParagraphFrame.Content.TextBounds.Y + 35)
-	end)
+    AddConnection(ParagraphFrame.Content:GetPropertyChangedSignal("Text"), function()
+        ParagraphFrame.Content.Size = UDim2.new(1, -24, 0, ParagraphFrame.Content.TextBounds.Y)
+        ParagraphFrame.Size = UDim2.new(1, 0, 0, ParagraphFrame.Content.TextBounds.Y + 35)
+    end)
 
-	ParagraphFrame.Content.Text = Content
+    ParagraphFrame.Content.Text = Content
 
-	local ParagraphFunction = {}
-	function ParagraphFunction:Set(ToChange)
-		ParagraphFrame.Content.Text = ToChange
-	end
-	return ParagraphFunction
+    local ParagraphFunction = {}
+    function ParagraphFunction:Set(ToChange)
+        ParagraphFrame.Content.Text = ToChange
+    end
+    return ParagraphFunction
 end    
 			function ElementFunction:AddButton(ButtonConfig)
 				ButtonConfig = ButtonConfig or {}
