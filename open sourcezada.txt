@@ -936,11 +936,11 @@ function ElementFunction:AddLabel(Text, Width, Height)
     local LabelHeight = Height or 200 -- Aumentado para 200 de altura
 
     local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-        Size = UDim2.new(LabelWidth, 0, 0,200 LabelHeight),  -- Usa o parâmetro para a altura
+        Size = UDim2.new(LabelWidth, 0, 0, LabelHeight),  -- Usa o parâmetro para a altura
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
-        AddThemeObject(SetProps(MakeElement("Label", Text, 10), {  -- Diminuído o tamanho do texto para 10
+        AddThemeObject(SetProps(MakeElement("Label", Text, 8), {  -- Diminuído o tamanho do texto para 8
             Size = UDim2.new(1, -12, 1, 0),
             Position = UDim2.new(0, 12, 0, 0),
             Font = Enum.Font.GothamBold,
@@ -961,17 +961,17 @@ function ElementFunction:AddParagraph(Text, Content)
     Content = Content or "Content"
 
     local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
-        Size = UDim2.new(1, 0, 0, 190),  -- Aumentado para 200 de altura
+        Size = UDim2.new(1, 0, 0, 200),  -- Aumentado para 200 de altura
         BackgroundTransparency = 0.7,
         Parent = ItemParent
     }), {
-        AddThemeObject(SetProps(MakeElement("Label", Text, 10), {  -- Diminuído o tamanho do título para 10
+        AddThemeObject(SetProps(MakeElement("Label", Text, 8), {  -- Diminuído o tamanho do título para 8
             Size = UDim2.new(1, -12, 0, 30),  -- Mantém a altura do título em 30
             Position = UDim2.new(0, 12, 0, 10),
             Font = Enum.Font.GothamBold,
             Name = "Title"
         }), "Text"),
-        AddThemeObject(SetProps(MakeElement("Label", "", 10), {  -- Diminuído o tamanho do conteúdo para 10
+        AddThemeObject(SetProps(MakeElement("Label", "", 8), {  -- Diminuído o tamanho do conteúdo para 8
             Size = UDim2.new(1, -24, 0, 0),
             Position = UDim2.new(0, 12, 0, 46),  -- Ajustado para posição abaixo do título
             Font = Enum.Font.GothamSemibold,
