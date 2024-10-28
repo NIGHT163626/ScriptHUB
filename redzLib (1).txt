@@ -335,7 +335,7 @@ function MakeWindow(Configs)
             end
         end)
     end
-end --termi aqui
+end
   
   local Menu = Create("Frame", ScreenGui, {
     BackgroundColor3 = Configs_HUB.Cor_Hub,
