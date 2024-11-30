@@ -1211,7 +1211,7 @@ end
 				local MaxElements = 5
 
 				if not table.find(Dropdown.Options, Dropdown.Value) then
-					Dropdown.Value = "..."
+					Dropdown.Value = "selecione"
 				end
 
 				local DropdownList = MakeElement("List")
